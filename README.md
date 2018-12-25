@@ -1,2 +1,2 @@
-# AFW
-Augly FireWall
+# UWFW
+Ugly Web FireWall
