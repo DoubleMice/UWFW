@@ -1,8 +1,8 @@
 # /bin/sh
 
-PWD=`pwd`
+CURR=`pwd`
 SRC=/usr/local/src
-LOG=$PWD/install.log
+LOG=$CURR/install.log
 apt update
 apt install unzip luarocks -y
 
@@ -17,7 +17,7 @@ make install
 echo "finish" >> $LOG
 
 echo "init sqlite3 db" >> $LOG
-sqlite3 log.db < $PWD/initdb.sql
+sqlite3 log.db < $CURR/initdb.sql
 echo "finish" >> $LOG
 
 luarocks install luasql-sqlite3
@@ -78,7 +78,7 @@ cd openresty-1.13.6.2
 make && make install
 ln -s /usr/local/openresty-1.13.6.2 /usr/local/openresty
 echo "    finish" >> $LOG
-echo "finish"
+echo "finish" >> $LOG
 
 
 #测试openresty安装
@@ -99,9 +99,9 @@ echo "finish"
 # curl http://127.0.0.1/hello
 #HelloWorld
 
-cp -a $PWD/waf /usr/local/openresty/nginx/conf/
+cp -a $CURR/waf /usr/local/openresty/nginx/conf/
 
-echo "boot openresty" 
+echo "boot openresty" >>$LOG
 sudo /usr/local/openresty/nginx/sbin/nginx -t
 sudo /usr/local/openresty/nginx/sbin/nginx
-echo "success"
+echo "success" >> $LOG
