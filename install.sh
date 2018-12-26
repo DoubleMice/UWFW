@@ -100,6 +100,7 @@ echo "finish" >> $LOG
 #HelloWorld
 
 cp -a $CURR/waf /usr/local/openresty/nginx/conf/
+cp $CURR/dist/nginx.conf /usr/local/openresty/nginx/conf/nginx.conf
 
 echo "boot openresty" >>$LOG
 sudo /usr/local/openresty/nginx/sbin/nginx -t
