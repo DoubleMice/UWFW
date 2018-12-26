@@ -99,3 +99,8 @@ sudo ./install.sh
 ## web监控部分
 
 django后端，监控log文件并输出到web端。
+
+
+## 平台
+
+ubuntu16.04 + openresty
