@@ -3,7 +3,7 @@
 --waf status
 config_waf_enable = "on"
 --log dir
-config_log_dir = "/tmp"
+config_log_dir = "/tmp/ngx_waf"
 --rule setting
 config_rule_dir = "/usr/local/openresty/nginx/conf/waf/rule-config"
 --enable/disable white url

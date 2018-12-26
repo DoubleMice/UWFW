@@ -1,0 +1,43 @@
+<h1 style="text-align: center;">非法操作日志</h1>
+<style type="text/css">
+table,td,th
+{
+	border:1px solid black;
+}
+td
+{
+    text-align:center;
+}
+table
+{
+	width:100%;
+}
+th
+{
+	height:50px;
+}
+</style>
+<table>
+    <tr>
+        <th>local_time</th>
+        <th>client_ip</th>
+        <th>rule_tag</th>
+        <th>attack_method</th>
+        <th>server_name</th>
+        <th>req_url</th>
+        <th>req_data</th>
+        <th>user_agent</th>
+    </tr>
+    {% for log in logs %}
+    <tr>
+        <td>{{ log.local_time }}</td>
+        <td>{{log.client_ip}}</td>
+        <td>{{log.rule_tag}}</td>
+        <td>{{log.attack_method}}</td>
+        <td>{{log.server_name}}</td>
+        <td>{{log.req_url}}</td>
+        <td>{{log.req_data}}</td>
+        <td>{{log.user_agent}}</td>
+    </tr>
+    {% endfor %}
+</table>
