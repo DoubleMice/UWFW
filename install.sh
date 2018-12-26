@@ -107,3 +107,32 @@ echo "boot openresty" >>$LOG
 sudo /usr/local/openresty/nginx/sbin/nginx -t
 sudo /usr/local/openresty/nginx/sbin/nginx
 echo "success" >> $LOG
+
+
+echo "install django" >> $LOG
+apt install python3 python3-pip -y
+cd ~
+mkdir .pip
+echo "[global]\nindex-url = https://pypi.tuna.tsinghua.edu.cn/simple/\n" > ./.pip/pip.conf
+pip3 install django
+echo "finish" >> $LOG
+
+echo "boot web log" >> $LOG
+cd $CURR/webview
+python3 manage.py runserver 0.0.0.0:8080
+echo "finish" >> $LOG
+
+print "OK
+攻击测试：
+    读敏感文件：
+        http://127.0.0.1/.bash_history
+    访问敏感页面：
+        http://127.0.0.1/phpmyadmin
+    url参数sql注入：
+        http://192.168.30.82/?test=select%20from
+    url参数xss：
+        http://192.168.30.82/?test=<script>%20alert("xss")</script>
+    扫描器防护：
+        sqlmap、netsaprker等漏洞扫描器拦截，安装后对测试页面测试即可
+
+"
