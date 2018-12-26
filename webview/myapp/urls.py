@@ -1,8 +1,8 @@
-from django.conf.urls import url, include 
+from django.conf.urls import url, include
+
 from . import views
 
-
 urlpatterns = [
-    url(r'logs$', views.show_logs, ),
-    url(r'graphs$', views.show_graphs),
+url(r'add_book$', views.add_book, ),
+url(r'show_books$', views.show_books, ),
 ]
