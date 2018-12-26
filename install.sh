@@ -119,7 +119,7 @@ echo "finish" >> $LOG
 
 echo "boot web log" >> $LOG
 cd $CURR/webview
-python3 manage.py runserver 0.0.0.0:8080
+python3 manage.py runserver
 echo "finish" >> $LOG
 
 print "OK
@@ -135,4 +135,6 @@ print "OK
     扫描器防护：
         sqlmap、netsaprker等漏洞扫描器拦截，安装后对测试页面测试即可
 
+日志查看：
+    http://127.0.0.1:8000
 "
