@@ -122,6 +122,9 @@ cd $CURR/webview
 python3 manage.py runserver
 echo "finish" >> $LOG
 
+mkdir /tmp/ngx_unsafe_log
+chmod 777 /tmp/ngx_unsafe_log
+
 print "OK
 攻击测试：
     读敏感文件：
