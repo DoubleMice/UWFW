@@ -1,9 +1,69 @@
 # UWFW
 Ugly Web FireWall
 
+### 架构
+```
+                    |-------------------|
+                    |                   |
+admin<------monitor server              |
+                                        |
+                                        |
+                        (is attacker)   |
+someone--------->server-------------->attack_log
+                    |
+                    |   (not attacker)
+                    |---------------->web resources
+```
+
+
 * waf部分：lua-nginx-module(openresty)
-* log部分：lua_mysql
-* web部分：django后端 + vue.js前端
+* log部分：lua
+* web部分：django后端
+
+## 目录结构
+```
+doublemice@DoubleMice-MBP:~/Desktop/UWFW|master⚡ 
+⇒  tree
+.
+├── README.md
+├── dist
+│   └── nginx.conf          ------------ 测试用的conf配置
+├── install.sh              ------------ 一键安装脚本
+├── waf
+│   ├── access.lua
+│   ├── config.lua
+│   ├── init.lua
+│   ├── lib.lua
+│   └── rule-config         ------------ 防火墙规则
+│       ├── args.rule
+│       ├── blackip.rule
+│       ├── cookie.rule
+│       ├── post.rule
+│       ├── url.rule
+│       ├── useragent.rule
+│       ├── whiteip.rule
+│       └── whiteurl.rule
+└── webview                 ------------ web日志监控
+    ├── manage.py
+    ├── templates
+    │   └── index.html
+    └── webview
+        ├── __init__.py
+        ├── __pycache__
+        │   ├── __init__.cpython-37.pyc
+        │   ├── settings.cpython-37.pyc
+        │   ├── urls.cpython-37.pyc
+        │   ├── view.cpython-37.pyc
+        │   ├── views.cpython-37.pyc
+        │   └── wsgi.cpython-37.pyc
+        ├── settings.py
+        ├── urls.py
+        ├── view.py
+        └── wsgi.py
+
+7 directories, 28 files
+```
+
 
 ## waf部分
 
@@ -38,8 +98,4 @@ sudo ./install.sh
 
 ## web监控部分
 
-### 部署
-
-### django后端
-
-### vue.js前端
+django后端，监控log文件并输出到web端。
