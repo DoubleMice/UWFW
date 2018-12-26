@@ -4,23 +4,24 @@ CURR=`pwd`
 SRC=/usr/local/src
 LOG=$CURR/install.log
 apt update
-apt install unzip && luarocks -y
+# apt install unzip && luarocks -y
+apt install unzip -y
 
-echo "install sqlite3" >> $LOG
-cd /tmp
-wget https://www.sqlite.org/2018/sqlite-autoconf-3260000.tar.gz
-tar -xvf sqlite-autoconf-3260000.tar.gz
-cd sqlite-autoconf-3260000
-./configure
-make
-make install
-echo "finish" >> $LOG
+# echo "install sqlite3" >> $LOG
+# cd /tmp
+# wget https://www.sqlite.org/2018/sqlite-autoconf-3260000.tar.gz
+# tar -xvf sqlite-autoconf-3260000.tar.gz
+# cd sqlite-autoconf-3260000
+# ./configure
+# make
+# make install
+# echo "finish" >> $LOG
 
-echo "init sqlite3 db" >> $LOG
-sqlite3 log.db < $CURR/initdb.sql
-echo "finish" >> $LOG
+# echo "init sqlite3 db" >> $LOG
+# sqlite3 log.db < $CURR/initdb.sql
+# echo "finish" >> $LOG
 
-luarocks install luasql-sqlite3
+# luarocks install luasql-sqlite3
 
 cd $SRC
 echo "download nginx" >> $LOG
