@@ -4,7 +4,7 @@ CURR=`pwd`
 SRC=/usr/local/src
 LOG=$CURR/install.log
 apt update
-apt install unzip luarocks -y
+apt install unzip && luarocks -y
 
 echo "install sqlite3" >> $LOG
 cd /tmp

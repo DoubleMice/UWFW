@@ -82,7 +82,7 @@ function log_record(method,url,data,ruletag)
     local USER_AGENT = get_user_agent()
     local SERVER_NAME = ngx.var.server_name
     local LOCAL_TIME = ngx.localtime()
-    conn:execute(insert into UNSAFE_LOG(client_ip,local_time,server_name,user_agent,attack_method,req_url,req_data,rule_tag) value (CLIENT_IP,LOCAL_TIME,SERVER_NAME,USER_AGENT,method,url,data,ruletag))
+    conn:exec(insert into UNSAFE_LOG(client_ip,local_time,server_name,user_agent,attack_method,req_url,req_data,rule_tag) value (CLIENT_IP,LOCAL_TIME,SERVER_NAME,USER_AGENT,method,url,data,ruletag))
     conn:close()
     env:close()
 end
