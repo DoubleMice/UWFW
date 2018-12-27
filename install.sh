@@ -7,6 +7,9 @@ apt update
 # apt install unzip && luarocks -y
 apt install unzip -y
 
+mkdir /tmp/ngx_unsafe_log
+chmod 777 /tmp/ngx_unsafe_log
+
 # echo "install sqlite3" >> $LOG
 # cd /tmp
 # wget https://www.sqlite.org/2018/sqlite-autoconf-3260000.tar.gz
@@ -119,11 +122,9 @@ echo "finish" >> $LOG
 
 echo "boot web log" >> $LOG
 cd $CURR/webview
-python3 manage.py runserver
+nohup python3 manage.py runserver &
 echo "finish" >> $LOG
 
-mkdir /tmp/ngx_unsafe_log
-chmod 777 /tmp/ngx_unsafe_log
 
 print "OK
 攻击测试：
