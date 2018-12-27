@@ -104,3 +104,37 @@ django后端，监控log文件并输出到web端。
 ## 平台
 
 ubuntu16.04 + openresty
+
+
+## 注意事项
+
+### 一些命令
+```sh
+# 查看nginx进程
+ps aux|grep nginx
+# 关闭nginx测试服务器
+sudo /usr/local/openresty/nginx/sbin/nginx
+# 开启web日志服务器
+python3 manage.py runserver
+```
+
+### 说明
+
+如需要修改规则，则进入相应目录：/usr/local/openresty/nginx/conf/waf/rule-config
+目录文件如下
+```
+├── args.rule
+├── blackip.rule
+├── cookie.rule
+├── post.rule
+├── url.rule
+├── useragent.rule
+├── whiteip.rule
+└── whiteurl.rule
+```
+修改相应文件中规则即可。
+
+举例：添加ip白名单
+
+在whiteip.rule文件中加入指定ip，然后重启nginx测试服务器。
+
